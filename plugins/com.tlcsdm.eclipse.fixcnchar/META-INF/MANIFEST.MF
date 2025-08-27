@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Automatic-Module-Name: com.tlcsdm.eclipse.fixcnchar
+Bundle-Name: %pluginName
+Bundle-SymbolicName: com.tlcsdm.eclipse.fixcnchar;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.tlcsdm.eclipse.fixcnchar.Activator
+Bundle-Vendor: %providerName
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-17
