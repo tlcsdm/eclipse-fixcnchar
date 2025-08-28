@@ -1,48 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <plugin>
-   <extension point="org.eclipse.ui.bindings">
-      <key
-            commandId="com.tlcsdm.eclipse.bpep.invoke"
-            contextId="org.eclipse.jdt.ui.javaEditorScope"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-            sequence="M1+M3+P">
-      </key>
-   </extension>
-   <extension point="org.eclipse.ui.commands">
-      <command id="com.tlcsdm.eclipse.bpep.invoke"
-               name="Generate Builder Pattern..."
-               description="Generate Builder Pattern code">
-      </command>
-   </extension>
-   
-   <extension point="org.eclipse.ui.handlers">
-   <handler
-			class="com.tlcsdm.eclipse.bpep.handler.GenerateBuilderHandler"
-			commandId="com.tlcsdm.eclipse.bpep.invoke">
-   </handler>
-   </extension>
-   
-   <extension point="org.eclipse.ui.menus">
-   <!-- 在 Java 编辑器 Source 菜单下添加 -->
-   <menuContribution
-         locationURI="menu:org.eclipse.jdt.ui.source.menu?after=generateGroup">
-      <command
-            commandId="com.tlcsdm.eclipse.bpep.invoke"
-            label="Generate Builder Pattern Code..."
-            style="push">
-      </command>
-   </menuContribution>
+    <extension point="org.eclipse.ui.preferencePages">
+        <page
+            id="com.tlcsdm.eclipse.fixcnchar.preferences"
+            name="Fix Chinese Characters"
+            class="com.tlcsdm.eclipse.fixcnchar.preferences.FixCharPreferencePage"
+            category="org.eclipse.ui.preferencePages.Workbench">
+        </page>
+    </extension>
+    <extension point="org.eclipse.core.runtime.preferences">
+        <initializer
+			class="com.tlcsdm.eclipse.fixcnchar.preferences.PreferenceInitializer"></initializer>
+    </extension>
 
-   <!-- 在 Java 编辑器上下文菜单添加 -->
-   <menuContribution
-         locationURI="popup:org.eclipse.jdt.ui.source.menu?after=generateGroup">
-      <command
-            commandId="com.tlcsdm.eclipse.bpep.invoke"
-            label="Generate Builder Pattern Code..."
-            style="push">
-      </command>
-   </menuContribution>
-   </extension>
+    <extension point="org.eclipse.ui.commands">
+        <command
+            id="com.tlcsdm.eclipse.fixcnchar.commands.replace"
+            name="Replace Chinese Punctuation"/>
+    </extension>
+
+    <extension point="org.eclipse.ui.handlers">
+        <handler
+            commandId="com.tlcsdm.eclipse.fixcnchar.commands.replace"
+            class="com.tlcsdm.eclipse.fixcnchar.handler.ReplaceHandler">
+        </handler>
+    </extension>
+
+    <extension point="org.eclipse.ui.bindings">
+        <key
+            commandId="com.tlcsdm.eclipse.fixcnchar.commands.replace"
+            contextId="org.eclipse.ui.textEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M3+R"/>
+    </extension>
 
 </plugin>

@@ -1,8 +1,11 @@
 package com.tlcsdm.eclipse.fixcnchar;
 
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+
+import com.tlcsdm.eclipse.fixcnchar.listener.FixCharEditorAttacher;
 
 public class Activator extends AbstractUIPlugin {
 	/** The plug-in ID */
@@ -36,6 +39,9 @@ public class Activator extends AbstractUIPlugin {
 	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
+		PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+			FixCharEditorAttacher.attachToAllEditors();
+		});
 	}
 
 	/*
