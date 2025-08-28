@@ -7,7 +7,7 @@
       plugin="com.tlcsdm.eclipse.fixcnchar">
 
    <description>
-      Builder Pattern Eclipse Plugin
+      Eclipse FixCNChar Eclipse Plugin
    </description>
 
    <copyright>
@@ -296,7 +296,7 @@ version(s), and exceptions or additional permissions here}.&quot;
 
    <url>
       <update label="%updateSiteName" url="https://raw.githubusercontent.com/tlcsdm/eclipse-fixcnchar/master/update_site/"/>
-      <discovery label="Builder Pattern Eclipse Plugin Update Site" url="https://raw.githubusercontent.com/tlcsdm/eclipse-fixcnchar/master/update_site/"/>
+      <discovery label="Eclipse FixCNChar Eclipse Plugin Update Site" url="https://raw.githubusercontent.com/tlcsdm/eclipse-fixcnchar/master/update_site/"/>
    </url>
 
    <requires>
