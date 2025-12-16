@@ -2,6 +2,8 @@
 
 能够自动将全角中文标点（如中文逗号、分号、句号、引号等）替换为半角标点。该工具帮助开发者在编码时保持标点统一，无需频繁切换输入法。
 
+Now Support Eclipse 2024-06 and later, Mac OS X, Linux (with nautilus) and Windows.
+
 ## Features
 * 在 Eclipse 编辑器中输入时，自动将中文标点符号（， 。 ； ： “ ” ‘ ’ （ ） 【 】 《 》）替换为英文符号。
 * 使用快捷键 `Ctrl+Alt+R`，可将选中内容中的中文标点一次性替换为英文标点。
