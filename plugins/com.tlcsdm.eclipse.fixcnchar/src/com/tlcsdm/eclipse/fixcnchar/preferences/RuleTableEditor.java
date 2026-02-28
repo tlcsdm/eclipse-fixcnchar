@@ -1,5 +1,7 @@
 package com.tlcsdm.eclipse.fixcnchar.preferences;
 
+import java.util.Map;
+
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -12,6 +14,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+
+import com.tlcsdm.eclipse.fixcnchar.util.RuleParser;
 
 /**
  * 可编辑规则表格 FieldEditor 显示中文符号 → 英文符号替换规则
@@ -142,17 +146,10 @@ public class RuleTableEditor extends FieldEditor {
 
 	private void loadRulesFromString(String rulesStr) {
 		table.removeAll();
-		if (rulesStr == null || rulesStr.isEmpty()) {
-			return;
-		}
-
-		String[] lines = rulesStr.replace("\\n", "\n").split("\\n");
-		for (String line : lines) {
-			if (line.contains("=")) {
-				String[] parts = line.split("=", 2);
-				TableItem item = new TableItem(table, SWT.NONE);
-				item.setText(new String[] { parts[0].trim(), parts[1].trim() });
-			}
+		Map<String, String> rules = RuleParser.parseRules(rulesStr);
+		for (Map.Entry<String, String> entry : rules.entrySet()) {
+			TableItem item = new TableItem(table, SWT.NONE);
+			item.setText(new String[] { entry.getKey(), entry.getValue() });
 		}
 	}
 
