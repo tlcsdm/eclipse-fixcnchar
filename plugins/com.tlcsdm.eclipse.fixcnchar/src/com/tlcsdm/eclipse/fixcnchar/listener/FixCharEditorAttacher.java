@@ -1,6 +1,5 @@
 package com.tlcsdm.eclipse.fixcnchar.listener;
 
-import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.ui.IEditorPart;
@@ -42,8 +41,8 @@ public class FixCharEditorAttacher {
 		page.addPartListener(new IPartListener2() {
 			@Override
 			public void partOpened(IWorkbenchPartReference partRef) {
-				if (partRef instanceof IEditorReference) {
-					IEditorPart editor = ((IEditorReference) partRef).getEditor(false);
+				if (partRef instanceof IEditorReference editorRef) {
+					IEditorPart editor = editorRef.getEditor(false);
 					attachToEditor(editor);
 				}
 			}
@@ -82,8 +81,8 @@ public class FixCharEditorAttacher {
 	 * 给单个编辑器挂监听器
 	 */
 	private static void attachToEditor(IEditorPart editor) {
-		if (editor instanceof ITextEditor) {
-			ISourceViewer viewer = (ISourceViewer) ((ITextEditor) editor).getAdapter(ITextViewer.class);
+		if (editor instanceof ITextEditor textEditor) {
+			ISourceViewer viewer = textEditor.getAdapter(ISourceViewer.class);
 			if (viewer != null) {
 				StyledText textWidget = viewer.getTextWidget();
 				if (textWidget != null && !textWidget.isDisposed()) {
